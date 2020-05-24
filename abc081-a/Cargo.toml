@@ -1,7 +1,7 @@
 # -*- coding:utf-8-unix -*-
 
 [package]
-name = "abc000"
+name = "abc081-a"
 version = "0.1.0"
 authors = ["HikaruEgashira <shighten@gmail.com>"]
 edition = "2018"
