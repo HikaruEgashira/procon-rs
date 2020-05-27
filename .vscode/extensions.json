@@ -1,8 +1,8 @@
 {
-  "recommendations": [
-    "matklad.rust-analyzer",
-    "bungcip.better-toml",
-    "panicbit.cargo",
-    "serayuzgur.crates"
-  ]
+    "recommendations": [
+        "matklad.rust-analyzer",
+        "bungcip.better-toml",
+        "panicbit.cargo",
+        "serayuzgur.crates"
+    ]
 }

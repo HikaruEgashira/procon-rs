@@ -1,5 +1,5 @@
 {
-  "[rust]": {
-    "editor.defaultFormatter": "matklad.rust-analyzer"
-  }
+    "[rust]": {
+        "editor.defaultFormatter": "matklad.rust-analyzer"
+    }
 }
