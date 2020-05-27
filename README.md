@@ -1,5 +1,11 @@
 ## competition rust
 
+<p>
+    <a href="https://online.visualstudio.com/environments/new?name=Learn%20Rust&repo=HikaruEgashira/competition-rust">
+        <img src="https://img.shields.io/endpoint?style=social&url=https%3A%2F%2Faka.ms%2Fvso-badge">
+    </a>
+</p>
+
 ### AtCoder のコンテストに Rust で参加するためのガイドブック
 
 https://doc.rust-jp.rs/atcoder-rust-resources/

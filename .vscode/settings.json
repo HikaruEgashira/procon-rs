@@ -1,5 +1,9 @@
 {
     "[rust]": {
         "editor.defaultFormatter": "matklad.rust-analyzer"
-    }
+    },
+    "search.exclude": {
+        "**/target": true
+    },
+    "lldb.verboseLogging": true
 }

@@ -3,6 +3,7 @@
         "matklad.rust-analyzer",
         "bungcip.better-toml",
         "panicbit.cargo",
-        "serayuzgur.crates"
+        "serayuzgur.crates",
+        "vadimcn.vscode-lldb"
     ]
 }
