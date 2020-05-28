@@ -7,9 +7,14 @@ project.init:
 	echo "cd {id}; rm -rf .git"
 
 project.clean:
-	rm -rf **/target
+	fd target --no-ignore --exec rm -rf
 
 project.util:
+	fd .git --no-ignore --hidden --type directory
 	rm -rf abc088-b/.git abc088-b/target
 	ln -s abc088-b/target target
 	cd abc088-b && cargo clean -p abc088-b
+
+code:
+	DIR="$$(fd cargo.toml --exec echo {//} | fzf)"; \
+	code "$$DIR"

@@ -8,18 +8,18 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        mut plan: [i32; n],
+        mut nums: [i32; n],
     }
 
     let mut operation_count = 0;
 
-    while plan.iter().all(|x| *x % 2 == 0) {
-        for x in plan.iter_mut() {
+    while nums.iter().all(|x| *x % 2 == 0) {
+        for x in nums.iter_mut() {
             *x /= 2;
         }
-    
+
         operation_count += 1;
     }
-    
+
     println!("{}", operation_count);
 }
