@@ -17,4 +17,4 @@ project.util:
 
 code:
 	DIR="$$(fd cargo.toml --exec echo {//} | fzf)"; \
-	code "$$DIR"
+	code -r "$$DIR"
