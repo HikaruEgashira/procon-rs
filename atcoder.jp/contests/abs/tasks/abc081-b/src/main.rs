@@ -5,21 +5,26 @@ use proconio::input;
 // ABC081B - Shift only
 // https://atcoder.jp/contests/abs/tasks/abc081_b
 
+fn pow_num(number: i32, i: i32) -> i32 {
+    if number % 2 == 0 {
+        pow_num(number / 2, i + 1)
+    } else {
+        i
+    }
+}
+
 fn main() {
     input! {
         n: usize,
         mut nums: [i32; n],
     }
 
-    let mut operation_count = 0;
+    let count = nums
+        .iter()
+        // 2で何回割り切れるかの配列に
+        .map(|num| pow_num(*num, 0))
+        // ↑で作成した配列の最小値を求める
+        .fold(std::i32::MAX, |m, v| v.min(m));
 
-    while nums.iter().all(|x| *x % 2 == 0) {
-        for x in nums.iter_mut() {
-            *x /= 2;
-        }
-
-        operation_count += 1;
-    }
-
-    println!("{}", operation_count);
+    println!("{}", count);
 }

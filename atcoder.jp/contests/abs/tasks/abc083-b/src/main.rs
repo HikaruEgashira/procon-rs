@@ -12,7 +12,7 @@ fn char2num(c: char) -> i32 {
 
 // ★
 fn sum_of_digits(n: i32) -> i32 {
-    n.to_string().chars().map(|c| char2num(c)).sum::<i32>()
+    n.to_string().chars().map(char2num).sum::<i32>()
 }
 
 fn main() {
@@ -23,10 +23,12 @@ fn main() {
     }
 
     let sum_result = (1..=n)
-        .filter(|ni| {
-            let sum_of_digits = sum_of_digits(*ni);
+        .filter(|i| {
+            let sum_of_digits = sum_of_digits(*i);
             a <= sum_of_digits && sum_of_digits <= b
         })
+        // .collect::<Vec<i32>>()
+        // .iter()
         .sum::<i32>();
 
     println!("{}", sum_result);

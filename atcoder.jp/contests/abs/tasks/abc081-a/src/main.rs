@@ -13,6 +13,8 @@ fn main() {
     input! {
         x: String
     }
+
     let res = x.chars().map(|c| char2num(c)).filter(|&c| c == 1).count();
+
     println!("{}", res);
 }
