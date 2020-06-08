@@ -16,13 +16,14 @@ fn main() {
 
     let mut alice = 0;
     let mut bob = 0;
-    for (i, &x) in v.iter().enumerate() {
+
+    v.iter().enumerate().for_each(|(i, x)| {
         if i % 2 == 0 {
             alice += x;
         } else {
             bob += x;
         }
-    }
+    });
 
     println!("{}", alice - bob);
 }
