@@ -17,11 +17,10 @@ fn collect_example() {
 
     assert_eq!(vec![2, 4, 6], doubled);
 
-    let one_to_one_hundred = (1..101)
-        .collect::<Vec<i32>>();
+    let one_to_one_hundred = (1..101).collect::<Vec<i32>>();
     let one_to_one_hundred_2 = one_to_one_hundred
         .iter()
-        .map(|value| *value)
+        .map(|&value| value)
         .collect::<Vec<i32>>();
 
     assert_eq!(one_to_one_hundred, one_to_one_hundred_2);
