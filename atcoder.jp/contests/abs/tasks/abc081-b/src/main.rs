@@ -13,10 +13,11 @@ fn pow_num(number: i32, i: i32) -> i32 {
     }
 }
 
+// O(^2)
 fn main() {
     input! {
         n: usize,
-        mut nums: [i32; n],
+        nums: [i32; n],
     }
 
     let count = nums
