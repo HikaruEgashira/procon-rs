@@ -13,7 +13,7 @@ fn main() {
 
     datas.sort();
 
-    let o: Option<i64> = datas
+    let calc: Option<i64> = datas
         .iter()
         // ↓これ消したい
         .map(|&v| v as i64)
@@ -22,15 +22,17 @@ fn main() {
             None => None,
         });
 
-    let res = match o {
+    let max = 10_i64.pow(18);
+    let none_value = -1;
+    let res = match calc {
         Some(num) => {
-            if num > 10i64.pow(18) {
-                -1
+            if num > max {
+                none_value
             } else {
                 num
             }
         }
-        None => -1,
+        None => none_value,
     };
 
     println!("{}", res);
