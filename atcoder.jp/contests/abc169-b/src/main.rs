@@ -15,6 +15,7 @@ fn main() {
 
     let o: Option<i64> = datas
         .iter()
+        // ↓これ消したい
         .map(|&v| v as i64)
         .fold(Some(1), |sum, i| match sum {
             Some(num) => num.checked_mul(i),
