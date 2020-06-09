@@ -22,13 +22,18 @@ fn main() {
         b: i32,
     }
 
+    // RangeInclusiveは実質iter
     let sum_result = (1..=n)
-        .filter(|i| {
-            let sum_of_digits = sum_of_digits(*i);
+        .filter(|&i| {
+            let sum_of_digits = sum_of_digits(i);
             a <= sum_of_digits && sum_of_digits <= b
         })
+        //
+        // ↓をするときれいなi32のiterに
         // .collect::<Vec<i32>>()
         // .iter()
+        //
+        // ↓== .fold(0, |sum, i| sum + i);
         .sum::<i32>();
 
     println!("{}", sum_result);
