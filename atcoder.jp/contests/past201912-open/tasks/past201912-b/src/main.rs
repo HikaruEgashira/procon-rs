@@ -1,5 +1,7 @@
 // -*- coding:utf-8-unix -*-
 
+// 18min
+
 use proconio::input;
 
 // ABC086C - Traveling
@@ -8,15 +10,18 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        mut plan: [(i32, i32, i32); n],  // Vec<(i32, i32, i32)>
+        data: [i32; n],
     }
-    plan.insert(0, (0, 0, 0));
-    let yes = plan.windows(2).all(|w| {
-        let (t0, x0, y0) = w[0];
-        let (t1, x1, y1) = w[1];
-        let time = t1 - t0;
-        let dist = (x1 - x0).abs() + (y1 - y0).abs();
-        dist <= time && time % 2 == dist % 2
+
+    (data as Vec<i32>).windows(2).for_each(|w| {
+        let diff: i32 = w[1] - w[0];
+
+        if diff > 0 {
+            println!("{} {}", "up", diff)
+        } else if diff < 0 {
+            println!("{} {}", "down", diff.abs())
+        } else {
+            println!("{}", "stay")
+        }
     });
-    println!("{}", if yes { "Yes" } else { "No" });
 }
