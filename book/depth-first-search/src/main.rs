@@ -25,7 +25,9 @@ fn main() {
         k: i32
     }
 
-    let solve = depth_first_search(0, 0, &Prop { n, a, k });
+    let prop = Prop { n, a, k };
+
+    let solve = depth_first_search(0, 0, &prop);
 
     println!("{}", if solve { "Yes" } else { "No" });
 }
