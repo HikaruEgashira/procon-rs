@@ -15,7 +15,7 @@ fn sample1() {
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "8\n");
+    assert_eq!(output.stdout_str(), "7\n");
     assert!(output.stderr_str().is_empty());
 }
 

@@ -2,16 +2,28 @@
 
 use proconio::input;
 
-// ABC086C - Traveling
-// https://atcoder.jp/contests/abs/fasks/arc089_a
-
 fn main() {
     input! {
         n: usize,
         k: i32,
-        p: [i32; n],
-        c: [i32; n],
+        p: [usize; n],
+        c: [i64; n],
     }
 
-    println!("{} {} {} {}", n, k, p[0], c[0]);
+    let res = (0..n)
+        .map(|ni| {
+            let mut pi = p[ni];
+            let mut ci = c[ni];
+            let mut sum: i64 = 0;
+            (0..k).for_each(|_| {
+                pi = p[pi - 1];
+                ci = c[pi - 1];
+                sum += ci;
+            });
+            sum
+        })
+        .max()
+        .unwrap_or(0);
+
+    println!("{}", res);
 }
