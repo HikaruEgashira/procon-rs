@@ -8,12 +8,13 @@ fn sample1() {
     let output = testdir
         .cmd()
         .output_with_stdin(
-            r#"30
+            r#"8
+3 3 4 4 5 8 7 9
 "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "3 6 9 12 13 15 18 21 23 24 27 30\n");
+    assert_eq!(output.stdout_str(), "9 7 8 5 4 4 3 3\n");
     assert!(output.stderr_str().is_empty());
 }
 
