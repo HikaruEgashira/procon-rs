@@ -1,3 +1,22 @@
+use cli_test_dir::*;
+
+const BIN: &'static str = "./main";
+
+#[test]
+fn sample1() {
+    let testdir = TestDir::new(BIN, "");
+    let output = testdir
+        .cmd()
+        .output_with_stdin(
+            r#"30
+"#,
+        )
+        .tee_output()
+        .expect_success();
+    assert_eq!(output.stdout_str(), "3 6 9 12 13 15 18 21 23 24 27 30\n");
+    assert!(output.stderr_str().is_empty());
+}
+
 #[test]
 pub fn map_example() {
     let v: Vec<i32> = vec![1, 2, 3]

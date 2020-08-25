@@ -50,4 +50,39 @@ macro_rules! read_value {
     };
 }
 
-fn main() {}
+fn include3(x: i32, i: i32) -> Option<i32> {
+    if x % 10 == 3 {
+        Some(i)
+    } else {
+        if x > 10 {
+            include3(x / 10, i)
+        } else {
+            None
+        }
+    }
+}
+
+fn main() {
+    input! {
+        n: i32
+    }
+
+    let mut arr = vec![];
+
+    for i in 1..n + 1 {
+        if i % 3 == 0 {
+            arr.push(Some(i));
+        } else {
+            arr.push(include3(i, i));
+        }
+    }
+
+    println!(
+        " {}",
+        arr.iter()
+            .filter(|a| a.is_some())
+            .map(|a| a.unwrap().to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
+}
