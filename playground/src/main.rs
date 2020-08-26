@@ -53,17 +53,25 @@ macro_rules! read_value {
 fn main() {
     input! {
         n: usize,
-        v: [i32; n],
+        v: [(String, i32); n],
     }
 
-    let mut v: Vec<i32> = v;
-    v.reverse();
+    type Card = Vec<(String, i32)>;
 
-    println!(
-        "{}",
-        v.iter()
-            .map(|v| v.to_string())
-            .collect::<Vec<String>>()
-            .join(" ")
-    );
+    let v: Card = v;
+
+    let list = ["S", "H", "C", "D"]
+        .iter()
+        .map(|&suit| {
+            (1..14)
+                .map(|rank| (suit.to_string(), rank))
+                .collect::<Card>()
+        })
+        .flat_map(|array| array)
+        .filter(|l| !v.contains(l))
+        .collect::<Card>();
+
+    for l in list {
+        println!("{} {}", l.0, l.1);
+    }
 }
