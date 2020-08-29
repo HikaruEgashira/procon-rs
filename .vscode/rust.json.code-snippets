@@ -1,0 +1,25 @@
+{
+    "atcoder": {
+        "prefix": "main",
+        "body": [
+            "/**",
+            " *    author : HikaruEgashira",
+            " *    created: $1.$2.$3 $4:$5:$6",
+            "**/",
+            "use proconio::fastout;",
+            "use proconio::input;",
+            "",
+            "#[fastout]",
+            "fn main() {",
+            "\tinput! {",
+            "\t\ta: i32,",
+            "\t}",
+            "",
+            "\t$7",
+            "",
+            "\tprintln!(\"{}\", a);",
+            "}"
+        ],
+        "description": "Atcoder"
+    }
+}
