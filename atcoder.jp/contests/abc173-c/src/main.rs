@@ -1,22 +1,32 @@
-// -*- coding:utf-8-unix -*-
-
+/**
+ *    author : HikaruEgashira
+ *    created:
+**/
 use proconio::input;
+use proconio::marker::Chars;
 
-// ABC086C - Traveling
-// https://atcoder.jp/contests/abs/fasks/arc089_a
-
+#[proconio::fastout]
 fn main() {
     input! {
-        n: usize,
-        mut plan: [(i32, i32, i32); n],  // Vec<(i32, i32, i32)>
+        h: usize, w: usize, k: usize,
+        c: [Chars; h],
     }
-    plan.insert(0, (0, 0, 0));
-    let yes = plan.windows(2).all(|w| {
-        let (t0, x0, y0) = w[0];
-        let (t1, x1, y1) = w[1];
-        let time = t1 - t0;
-        let dist = (x1 - x0).abs() + (y1 - y0).abs();
-        dist <= time && time % 2 == dist % 2
-    });
-    println!("{}", if yes { "Yes" } else { "No" });
+
+    let (h, w, k, c): (usize, usize, usize, Vec<Vec<char>>) = (h, w, k, c);
+
+    // 選ばない
+    let no_choose = c.iter().map(|ci| ci.iter().map(|&cii| cii == '#')).count() == k;
+    let count = c
+        .iter()
+        .enumerate()
+        .map(move |(y, ci)| {
+            ci.iter()
+                .enumerate()
+                .filter(move |&(x, &cii)| x != w && y != h && cii == '#')
+                .count()
+        })
+        .filter(|&ii| ii == k)
+        .count();
+
+    println!("{}", if no_choose { count + 1 } else { count });
 }

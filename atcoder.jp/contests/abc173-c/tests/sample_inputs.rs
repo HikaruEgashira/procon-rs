@@ -7,13 +7,15 @@ fn sample1() {
     let testdir = TestDir::new(BIN, "");
     let output = testdir
         .cmd()
-        .output_with_stdin(r#"2
-3 1 2
-6 1 1
-"#)
+        .output_with_stdin(
+            r#"2 3 4
+..#
+###
+"#,
+        )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "Yes\n");
+    assert_eq!(output.stdout_str(), "1\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -22,12 +24,15 @@ fn sample2() {
     let testdir = TestDir::new(BIN, "");
     let output = testdir
         .cmd()
-        .output_with_stdin(r#"1
-2 100 100
-"#)
+        .output_with_stdin(
+            r#"2 2 3
+##
+##
+"#,
+        )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "No\n");
+    assert_eq!(output.stdout_str(), "0\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -36,13 +41,18 @@ fn sample3() {
     let testdir = TestDir::new(BIN, "");
     let output = testdir
         .cmd()
-        .output_with_stdin(r#"2
-5 1 1
-100 1 1
-"#)
+        .output_with_stdin(
+            r#"6 6 8
+..##..
+.#..#.
+#....#
+######
+#....#
+#....#
+"#,
+        )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "No\n");
+    assert_eq!(output.stdout_str(), "208\n");
     assert!(output.stderr_str().is_empty());
 }
-
