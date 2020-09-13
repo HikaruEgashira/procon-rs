@@ -53,25 +53,49 @@ macro_rules! read_value {
 fn main() {
     input! {
         n: usize,
-        v: [(String, i32); n],
+        bfrvs: [(usize, usize, usize, i32); n],
     }
+    let bfrvs: Vec<(usize, usize, usize, i32)> = bfrvs;
 
-    type Card = Vec<(String, i32)>;
+    let univ: Vec<Vec<Vec<i32>>> =
+        bfrvs
+            .iter()
+            .fold(vec![vec![vec![0; 10]; 3]; 4], |mut univ, &(b, f, r, v)| {
+                univ[b][f][r] += v;
+                if univ[b][f][r] < 0 {
+                    univ[b][f][r] = 0;
+                }
+                univ
+            });
 
-    let v: Card = v;
+    for froor in univ[0].clone() {
+        for f in froor {
+            print!(" {}", f);
+        }
+        println!("");
+    }
+    println!("{}", &"#".repeat(20));
 
-    let list = ["S", "H", "C", "D"]
-        .iter()
-        .map(|&suit| {
-            (1..14)
-                .map(|rank| (suit.to_string(), rank))
-                .collect::<Card>()
-        })
-        .flat_map(|array| array)
-        .filter(|l| !v.contains(l))
-        .collect::<Card>();
+    for froor in univ[1].clone() {
+        for f in froor {
+            print!(" {}", f);
+        }
+        println!("");
+    }
+    println!("{}", &"#".repeat(20));
 
-    for l in list {
-        println!("{} {}", l.0, l.1);
+    for froor in univ[2].clone() {
+        for f in froor {
+            print!(" {}", f);
+        }
+        println!("");
+    }
+    println!("{}", &"#".repeat(20));
+
+    for froor in univ[3].clone() {
+        for f in froor {
+            print!(" {}", f);
+        }
+        println!("");
     }
 }
