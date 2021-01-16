@@ -1,20 +1,13 @@
-use std::usize;
+use std::{cmp::Ordering, usize};
 
 /**
  *    author : HikaruEgashira
 **/
-use proconio::input;
+use competitive::prelude::*;
 
-fn main() {
-    input! {
-        n: usize,
-    }
-
-    let len = (2 as usize).pow(n as u32) as usize;
-
-    input! {
-        a: [i32; len],
-    }
+#[argio(output = AtCoder)]
+fn main(n: usize, a: [i64; 2_usize.pow(n as _)]) -> usize {
+    let len = a.len();
 
     // (index, rate)
     let mut left_max = (0, 0);
@@ -34,11 +27,9 @@ fn main() {
         }
     });
 
-    let res = if left_max.1 > right_max.1 {
-        right_max.0
-    } else {
-        left_max.0
-    };
-
-    println!("{}", res);
+    match (left_max.1).cmp(&right_max.1) {
+        Ordering::Less => left_max.0,
+        Ordering::Greater => right_max.0,
+        _ => panic!("Cannot solve"),
+    }
 }
