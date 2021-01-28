@@ -11,9 +11,9 @@ fn main(n: Chars) -> String {
     // 3つ毎に配列にして
     // 条件に合うか確認して
     // その中にSomeがあればそれを返す
-    let data = (n as Vec<char>)
+    let data = n
         .windows(3)
-        .map(|list: &[char]| match is_same_value(list) {
+        .map(|list| match is_same_value(list) {
             true => Some(list[0]),
             false => None,
         })
