@@ -16,22 +16,24 @@ fn main() {
     }
     let judge: Vec<String> = judge;
 
-    let mut judge_result = Judge {
-        ac: 0,
-        wa: 0,
-        tle: 0,
-        re: 0,
-    };
-    judge.iter().for_each(|j| {
-        let ju: &str = j;
-        match ju {
-            "AC" => judge_result.ac = judge_result.ac + 1,
-            "WA" => judge_result.wa = judge_result.wa + 1,
-            "TLE" => judge_result.tle = judge_result.tle + 1,
-            "RE" => judge_result.re = judge_result.re + 1,
-            _ => {}
-        }
-    });
+    let judge_result = judge.iter().fold(
+        Judge {
+            ac: 0,
+            wa: 0,
+            tle: 0,
+            re: 0,
+        },
+        |mut acc, s| {
+            match s as &str {
+                "AC" => acc.ac = acc.ac + 1,
+                "WA" => acc.wa = acc.wa + 1,
+                "TLE" => acc.tle = acc.tle + 1,
+                "RE" => acc.re = acc.re + 1,
+                _ => {}
+            };
+            acc
+        },
+    );
 
     println!("AC x {}", judge_result.ac);
     println!("WA x {}", judge_result.wa);
