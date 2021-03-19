@@ -12,15 +12,11 @@ fn main() {
     }
 
     datas.sort();
+    let datas: Vec<i64> = datas;
 
     let calc: Option<i64> = datas
         .iter()
-        // ↓これ消したい
-        .map(|&v| v as i64)
-        .fold(Some(1), |sum, i| match sum {
-            Some(num) => num.checked_mul(i),
-            None => None,
-        });
+        .fold(Some(1), |sum, &i| sum.unwrap().checked_mul(i));
 
     let max = 10_i64.pow(18);
     let none_value = -1;
