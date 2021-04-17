@@ -11,13 +11,13 @@ fn main() {
     }
 
     let per_one_a = y / x;
-    let float_res = y / x * z;
-    let per_one_b = float_res.round() / z;
+    let float_res = (y / x * z).round();
+    let per_one_b = float_res / z;
 
     let res = if per_one_a > per_one_b {
-        float_res.round() as i64
+        float_res as i64
     } else {
-        float_res.round() as i64 - 1
+        float_res as i64 - 1
     };
 
     println!("{}", res);
