@@ -63,23 +63,27 @@ fn main() {
         };
 
         let max = **[&u, &d, &l, &r].iter().max().unwrap();
-        let c = if max == 0 {
+        let selected_char = if max == 0 {
             ""
         } else if max == u {
-            me = (me.0 - 1, me.1);
             "U"
         } else if max == d {
-            me = (me.0 + 1, me.1);
             "D"
         } else if max == l {
-            me = (me.0, me.1 - 1);
             "L"
         } else {
-            me = (me.0, me.1 + 1);
             "R"
         };
 
-        print!("{}", c);
+        me = match selected_char {
+            "U" => (me.0 - 1, me.1),
+            "D" => (me.0 + 1, me.1),
+            "L" => (me.0, me.1 - 1),
+            "R" => (me.0, me.1 + 1),
+            _ => (me.0, me.1),
+        };
+
+        print!("{}", selected_char);
     });
 
     println!("");
